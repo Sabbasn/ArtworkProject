@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import FormInput from "./FormInput";
+import AuthService from "../services/AuthService";
 
 export default function Register() {
   const [formData, setFormData] = useState({
