@@ -1,4 +1,5 @@
 import FormInput from "./FormInput";
+import "./Login.css";
 
 export default function LogIn() {
   return (
@@ -15,7 +16,7 @@ export default function LogIn() {
             <a>
               Don't have an account?{" "}
               <span style={{ color: "var(--bs-primary)" }}>
-                <a href="/register">Register here</a>
+                <a href="/register">Register</a>
               </span>
             </a>
           </p>
