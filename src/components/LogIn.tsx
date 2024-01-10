@@ -13,7 +13,7 @@ export default function LogIn() {
           <button className="btn btn-primary">Log In</button>
           <p className="mt-3">
             <a>
-              Don't have an account?
+              Don't have an account?{" "}
               <span style={{ color: "var(--bs-primary)" }}>
                 <a href="/register">Register here</a>
               </span>
