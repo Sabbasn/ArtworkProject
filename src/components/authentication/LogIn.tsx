@@ -1,7 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import AuthService from "../services/AuthService";
+import AuthService from "../../services/AuthService";
 import AuthFormInput from "./AuthFormInput";
-import "./Login.css";
 
 interface LogInProps {
   authService: AuthService;
@@ -26,7 +25,7 @@ export default function LogIn(props: LogInProps) {
 
   return (
     <div className="container" style={{ width: "600px", minWidth: "300px" }}>
-      <div className="card">
+      <div className="card p-3">
         <div className="card-top">
           <h1 className="card-title mb-3">Log In</h1>
         </div>

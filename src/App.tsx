@@ -1,22 +1,14 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
-import LogIn from "./components/LogIn";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Register from "./components/Register";
-import AuthService from "./services/AuthService";
 
 function App() {
-  const _authService: AuthService = new AuthService();
   return (
-    <div className="h-100 d-flex align-items-center justify-content-center">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LogIn authService={_authService} />} />
-          <Route
-            path="register"
-            element={<Register authService={_authService} />}
-          />
-        </Routes>
-      </BrowserRouter>
+    <div className="container h-100 d-flex justify-content-center align-items-center">
+      <div>
+        <h1>ArtworkProject</h1>
+        <p className="fst-italic">A go to place for the modern artist</p>
+      </div>
+      <Outlet />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import AuthFormInput from "./AuthFormInput";
-import AuthService from "../services/AuthService";
+import AuthService from "../../services/AuthService";
 
 interface RegisterProps {
   authService: AuthService;
@@ -29,7 +29,7 @@ export default function Register(props: RegisterProps) {
 
   return (
     <div className="container" style={{ width: "600px", minWidth: "300px" }}>
-      <div className="card">
+      <div className="card p-3">
         <div className="card-top">
           <h1 className="card-title mb-3">Register</h1>
         </div>
