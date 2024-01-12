@@ -6,7 +6,7 @@ interface Props {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function FormInput(props: Props) {
+export default function AuthFormInput(props: Props) {
   const id: string = props.name.charAt(0).toLowerCase();
   const nameNoWhitespace = props.name.replace(" ", "");
   const name: string =
