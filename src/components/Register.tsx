@@ -1,15 +1,19 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import FormInput from "./FormInput";
+import AuthFormInput from "./AuthFormInput";
 import AuthService from "../services/AuthService";
 
-export default function Register() {
+interface RegisterProps {
+  authService: AuthService;
+}
+
+export default function Register(props: RegisterProps) {
+  const _authService = props.authService;
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
     confirmPassword: "",
   });
-
-  const _authService: AuthService = new AuthService();
 
   function register(e: FormEvent) {
     e.preventDefault();
@@ -31,13 +35,17 @@ export default function Register() {
         </div>
         <div className="card-body">
           <form onSubmit={register}>
-            <FormInput name="Username" type="text" onChange={handleChange} />
-            <FormInput
+            <AuthFormInput
+              name="Username"
+              type="text"
+              onChange={handleChange}
+            />
+            <AuthFormInput
               name="Password"
               type="password"
               onChange={handleChange}
             />
-            <FormInput
+            <AuthFormInput
               name="Confirm Password"
               type="password"
               onChange={handleChange}
