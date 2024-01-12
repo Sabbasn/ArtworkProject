@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import "./scss/styles.scss";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LogIn from "./components/authentication/LogIn.tsx";
 import AuthService from "./services/AuthService.ts";

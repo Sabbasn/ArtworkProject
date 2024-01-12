@@ -1,4 +1,5 @@
 import ArtWorkPost from "./ArtworkPost";
+import ArtworkSortButton from "./ArtworkSortButton";
 
 export default function Home() {
   const artworkSamples: Artwork[] = [
@@ -30,7 +31,10 @@ export default function Home() {
 
   return (
     <div className="container p-3">
-      <h1>Artwork</h1>
+      <div className="d-flex justify-content-center gap-3">
+        <h1>Artwork</h1>
+        <ArtworkSortButton />
+      </div>
       <div className="card-body d-flex flex-column gap-3">
         {artworkSamples
           .sort((a, b) => a.dateUploaded.getTime() - b.dateUploaded.getTime())
