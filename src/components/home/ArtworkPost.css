@@ -1,0 +1,8 @@
+.hover-scale {
+  transition: 0.15s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.1);
+  z-index: 10;
+}

@@ -29,7 +29,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="card container p-3">
+    <div className="container p-3">
       <h1>Artwork</h1>
       <div className="card-body d-flex flex-column gap-3">
         {artworkSamples
