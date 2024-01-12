@@ -1,7 +1,14 @@
+import AuthService from "../services/AuthService";
 import FormInput from "./FormInput";
 import "./Login.css";
 
 export default function LogIn() {
+  const _authService: AuthService = new AuthService();
+
+  function logIn() {
+    _authService.loginUser({});
+  }
+
   return (
     <div className="container" style={{ width: "600px", minWidth: "300px" }}>
       <div className="card">
@@ -11,7 +18,9 @@ export default function LogIn() {
         <div className="card-body">
           <FormInput name="Username" type="text" />
           <FormInput name="Password" type="password" />
-          <button className="btn btn-primary">Log In</button>
+          <button className="btn btn-primary" onClick={logIn}>
+            Log In
+          </button>
           <p className="mt-3">
             Don't have an account?{" "}
             <span style={{ color: "var(--bs-primary)" }}>
