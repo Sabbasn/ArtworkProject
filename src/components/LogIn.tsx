@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import AuthService from "../services/AuthService";
 import AuthFormInput from "./AuthFormInput";
 import "./Login.css";
@@ -9,10 +9,19 @@ interface LogInProps {
 
 export default function LogIn(props: LogInProps) {
   const _authService = props.authService;
+  const [loginData, setLoginData] = useState([]);
 
   function logIn(e: FormEvent) {
     e.preventDefault();
-    _authService.loginUser({});
+    console.log(loginData);
+    _authService.loginUser({ loginData });
+  }
+
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    setLoginData({
+      ...loginData,
+      [e.target.name]: e.target.value,
+    });
   }
 
   return (
@@ -23,8 +32,16 @@ export default function LogIn(props: LogInProps) {
         </div>
         <div className="card-body">
           <form onSubmit={logIn}>
-            <AuthFormInput name="Username" type="text" />
-            <AuthFormInput name="Password" type="password" />
+            <AuthFormInput
+              name="Username"
+              type="text"
+              onChange={handleChange}
+            />
+            <AuthFormInput
+              name="Password"
+              type="password"
+              onChange={handleChange}
+            />
             <button className="btn btn-primary" onClick={logIn}>
               Log In
             </button>
