@@ -1,4 +1,8 @@
-export default function ArtworkSortButton() {
+interface ArtworkSortButtonProps {
+  onClick: () => Event;
+}
+
+export default function ArtworkSortButton(props: ArtworkSortButtonProps) {
   return (
     <div>
       <i
@@ -8,6 +12,7 @@ export default function ArtworkSortButton() {
           cursor: "pointer",
           transition: "0.2s ease-in-out",
         }}
+        onClick={props.onClick}
       ></i>
     </div>
   );

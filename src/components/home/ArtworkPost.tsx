@@ -6,15 +6,20 @@ interface ArtWorkPostProps {
 
 export default function ArtWorkPost(props: ArtWorkPostProps) {
   return (
-    <div
-      className="card mx-auto hover-scale"
-      style={{
-        width: "18rem",
-        backgroundImage: "linear-gradient(#103252, #4176af)",
-      }}
-    >
-      <img src={props.artwork.imgUrl} className="card-img-top" />
-      <div className="card-body">
+    <div className="card hover-scale">
+      <img
+        src={props.artwork.imgUrl}
+        className="card-img-top"
+        style={{
+          maxWidth: "300px",
+          width: "auto",
+          height: "auto",
+        }}
+      />
+      <div
+        className="card-body"
+        style={{ backgroundImage: "linear-gradient(#103252, #4176af)" }}
+      >
         <h2 className="card-title">{props.artwork.title}</h2>
         <p className="card-text fst-italic">{props.artwork.description}</p>
         <h3>By: {props.artwork.artistName}</h3>

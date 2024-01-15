@@ -1,0 +1,9 @@
+.card-body.d-flex {
+  flex-direction: row;
+}
+
+@media (max-width: 600px) {
+  .card-body.d-flex {
+    flex-direction: column;
+  }
+}
