@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import AuthFormInput from "./AuthFormInput";
 import AuthService from "../../services/AuthService";
+import { useNavigate } from "react-router-dom";
 
 interface RegisterProps {
   authService: AuthService;
@@ -9,15 +10,23 @@ interface RegisterProps {
 export default function Register(props: RegisterProps) {
   const _authService = props.authService;
 
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
     confirmPassword: "",
   });
 
-  function register(e: FormEvent) {
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function register(e: FormEvent) {
     e.preventDefault();
-    _authService.registerUser(formData);
+    const response = await _authService.registerUser(formData);
+    setErrorMessage(response["errors"][0]["description"]);
+    if (response["succeeded"]) {
+      navigate("/login");
+    }
   }
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
@@ -60,6 +69,7 @@ export default function Register(props: RegisterProps) {
               <a href="/">Log In</a>
             </span>
           </p>
+          <p style={{ color: "var(--bs-warning)" }}>{errorMessage}</p>
         </div>
       </div>
     </div>

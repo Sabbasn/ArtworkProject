@@ -1,26 +1,51 @@
 import Cookies from "universal-cookie";
 
 class AuthService {
-  private API_URL: string = "";
+  private API_URL: string = "https://localhost:7280/api/user/";
   private cookies = new Cookies();
 
-  public async registerUser(userData: object) {
-    const response = await fetch(this.API_URL, {
+  public async registerUser(userData: { [key: string]: string }) {
+    userData = {
+      userName: userData["username"],
+      password: userData["password"],
+    };
+
+    const response = await fetch(this.API_URL + "register", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
       body: JSON.stringify(userData),
     });
-    return response.json();
+    if (response.ok) {
+      this.cookies.set("bearerToken", await response.json());
+      return true;
+    }
+    const json = await response.json();
+    return json;
   }
 
-  public async loginUser(userData: object) {
-    const response = await fetch(this.API_URL, {
+  public async loginUser(userData: { [key: string]: string }) {
+    const data = {
+      userName: userData["username"],
+      password: userData["password"],
+    };
+    console.log(data);
+    const response = await fetch(this.API_URL + "login", {
       method: "POST",
-      body: JSON.stringify(userData),
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(data),
     });
+    if (response.ok) {
+      this.cookies.set("bearerToken", await response.json());
+      return true;
+    }
     const json = await response.json();
-    const data = json["data"];
-    this.cookies.set("token", data["token"]);
-    return data;
+    return json;
   }
 }
 

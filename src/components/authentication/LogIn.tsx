@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import AuthService from "../../services/AuthService";
 import AuthFormInput from "./AuthFormInput";
+import { useNavigate } from "react-router-dom";
 
 interface LogInProps {
   authService: AuthService;
@@ -8,12 +9,14 @@ interface LogInProps {
 
 export default function LogIn(props: LogInProps) {
   const _authService = props.authService;
-  const [loginData, setLoginData] = useState([]);
+  const [loginData, setLoginData] = useState({});
+  const navigate = useNavigate();
 
-  function logIn(e: FormEvent) {
+  async function logIn(e: FormEvent) {
     e.preventDefault();
-    console.log(loginData);
-    _authService.loginUser({ loginData });
+    if ((await _authService.loginUser(loginData)) === true) {
+      navigate("home");
+    }
   }
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
