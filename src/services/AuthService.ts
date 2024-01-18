@@ -19,7 +19,7 @@ class AuthService {
       body: JSON.stringify(userData),
     });
     if (response.ok) {
-      this.cookies.set("bearerToken", await response.json());
+      this.cookies.set("bearerToken", await response.json(), { secure: true });
       return true;
     }
     const json = await response.json();
@@ -44,6 +44,10 @@ class AuthService {
       this.cookies.set("bearerToken", json["data"]);
     }
     return json;
+  }
+
+  public logOut() {
+    this.cookies.remove("bearerToken");
   }
 }
 
