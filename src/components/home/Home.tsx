@@ -9,7 +9,7 @@ export default function Home() {
       <div className="d-flex justify-content-center gap-3">
         <h1>Artwork</h1>
       </div>
-      <div className="card-body d-flex justify-content-center gap-3">
+      <div className="d-flex justify-content-center gap-3">
         {artworkSamples
           .sort((a, b) => a.dateUploaded.getTime() - b.dateUploaded.getTime())
           .map((art) => (

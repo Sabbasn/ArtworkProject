@@ -16,10 +16,7 @@ export default function ArtWorkPost(props: ArtWorkPostProps) {
           height: "auto",
         }}
       />
-      <div
-        className="card-body"
-        style={{ backgroundImage: "linear-gradient(#BD2D76, #D6245C)" }}
-      >
+      <div className="card-body">
         <h2 className="card-title">{props.artwork.title}</h2>
         <p className="card-text fst-italic">{props.artwork.description}</p>
         <h3>By: {props.artwork.artistName}</h3>
