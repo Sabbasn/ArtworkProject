@@ -10,12 +10,16 @@ interface LogInProps {
 export default function LogIn(props: LogInProps) {
   const _authService = props.authService;
   const [loginData, setLoginData] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   async function logIn(e: FormEvent) {
     e.preventDefault();
-    if ((await _authService.loginUser(loginData)) === true) {
+    const response = await _authService.loginUser(loginData);
+    if (response["success"]) {
       navigate("home");
+    } else {
+      setErrorMessage(response["message"]);
     }
   }
 
@@ -54,6 +58,7 @@ export default function LogIn(props: LogInProps) {
               <a href="/register">Register</a>
             </span>
           </p>
+          <p style={{ color: "var(--bs-warning)" }}>{errorMessage}</p>
         </div>
       </div>
     </div>

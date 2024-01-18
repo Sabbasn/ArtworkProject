@@ -9,6 +9,7 @@ import AuthService from "./services/AuthService.ts";
 import Register from "./components/authentication/Register.tsx";
 import Home from "./components/home/Home.tsx";
 import AuthLayout from "./components/authentication/AuthLayout.tsx";
+import HomeLayout from "./components/home/HomeLayout.tsx";
 
 const _authService = new AuthService();
 const router = createBrowserRouter([
@@ -27,9 +28,14 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "home",
-    element: <Home />,
-    children: [],
+    path: "/",
+    element: <HomeLayout />,
+    children: [
+      {
+        path: "home",
+        element: <Home />,
+      },
+    ],
   },
 ]);
 

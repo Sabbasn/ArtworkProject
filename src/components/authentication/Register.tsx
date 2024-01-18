@@ -23,9 +23,10 @@ export default function Register(props: RegisterProps) {
   async function register(e: FormEvent) {
     e.preventDefault();
     const response = await _authService.registerUser(formData);
-    setErrorMessage(response["errors"][0]["description"]);
-    if (response["succeeded"]) {
-      navigate("/login");
+    if (response["success"]) {
+      navigate("login");
+    } else {
+      setErrorMessage(response["message"]);
     }
   }
 

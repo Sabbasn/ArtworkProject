@@ -31,7 +31,6 @@ class AuthService {
       userName: userData["username"],
       password: userData["password"],
     };
-    console.log(data);
     const response = await fetch(this.API_URL + "login", {
       method: "POST",
       headers: {
@@ -40,11 +39,10 @@ class AuthService {
       },
       body: JSON.stringify(data),
     });
-    if (response.ok) {
-      this.cookies.set("bearerToken", await response.json());
-      return true;
-    }
     const json = await response.json();
+    if (json["success"]) {
+      this.cookies.set("bearerToken", json["data"]);
+    }
     return json;
   }
 }
