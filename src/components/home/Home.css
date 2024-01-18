@@ -1,3 +1,10 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .card-body.d-flex {
   flex-direction: row;
 }
@@ -6,4 +13,9 @@
   .card-body.d-flex {
     flex-direction: column;
   }
+}
+
+.stretch,
+.card {
+  min-height: 100%;
 }

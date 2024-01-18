@@ -4,9 +4,11 @@ import Navbar from "./Navbar";
 export default function HomeLayout() {
   return (
     <>
-      <Navbar />
-      <div className="container">
-        <Outlet />
+      <div className="container stretch card">
+        <Navbar />
+        <div>
+          <Outlet />
+        </div>
       </div>
     </>
   );
