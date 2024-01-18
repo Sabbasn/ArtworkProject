@@ -6,7 +6,7 @@
 .card-body {
   border-bottom-left-radius: 0.3em;
   border-bottom-right-radius: 0.3em;
-  background: linear-gradient(-45deg, #061420, #1d588f);
+  background: #103252;
 }
 
 .hover-scale:hover {

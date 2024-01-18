@@ -14,7 +14,7 @@ class AuthService {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://localhost:7280",
       },
       body: JSON.stringify(userData),
     });
@@ -35,7 +35,7 @@ class AuthService {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://localhost:7280",
       },
       body: JSON.stringify(data),
     });
