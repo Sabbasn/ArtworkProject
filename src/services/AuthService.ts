@@ -18,12 +18,15 @@ class AuthService {
       },
       body: JSON.stringify(userData),
     });
-    if (response.ok) {
-      this.cookies.set("bearerToken", await response.json(), { secure: true });
-      return true;
-    }
     const json = await response.json();
+    if (json["success"]) {
+      this.setCookie("bearerToken", json["data"]);
+    }
     return json;
+  }
+
+  private setCookie(name: string, data: string) {
+    this.cookies.set(name, data, { secure: true, httpOnly: true });
   }
 
   public async loginUser(userData: { [key: string]: string }) {
@@ -41,7 +44,7 @@ class AuthService {
     });
     const json = await response.json();
     if (json["success"]) {
-      this.cookies.set("bearerToken", json["data"]);
+      this.setCookie("bearerToken", json["data"]);
     }
     return json;
   }
