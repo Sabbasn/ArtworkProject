@@ -1,16 +1,11 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import AuthFormInput from "./AuthFormInput";
-import AuthService from "../../services/AuthService";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../App";
 
-interface RegisterProps {
-  authService: AuthService;
-}
-
-export default function Register(props: RegisterProps) {
-  const _authService = props.authService;
-
+export default function Register() {
   const navigate = useNavigate();
+  const authService = useContext(AuthContext);
 
   const [formData, setFormData] = useState({
     username: "",
@@ -22,9 +17,9 @@ export default function Register(props: RegisterProps) {
 
   async function register(e: FormEvent) {
     e.preventDefault();
-    const response = await _authService.registerUser(formData);
+    const response = await authService.registerUser(formData);
     if (response["success"]) {
-      navigate("login");
+      navigate("/");
     } else {
       setErrorMessage(response["message"]);
     }

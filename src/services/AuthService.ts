@@ -3,6 +3,15 @@ import Cookies from "universal-cookie";
 class AuthService {
   private API_URL: string = "https://localhost:7280/api/user/";
   private cookies = new Cookies();
+  private loggedIn = false;
+
+  public isLoggedIn() {
+    return this.loggedIn;
+  }
+
+  private setCookie(name: string, data: string) {
+    this.cookies.set(name, data, { secure: true, httpOnly: false });
+  }
 
   public async registerUser(userData: { [key: string]: string }) {
     userData = {
@@ -23,10 +32,6 @@ class AuthService {
       this.setCookie("bearerToken", json["data"]);
     }
     return json;
-  }
-
-  private setCookie(name: string, data: string) {
-    this.cookies.set(name, data, { secure: true, httpOnly: true });
   }
 
   public async loginUser(userData: { [key: string]: string }) {

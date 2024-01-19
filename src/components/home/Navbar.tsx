@@ -1,14 +1,15 @@
 import NavbarItem from "./NavbarItem";
 import "./Navbar.css";
-import AuthService from "../../services/AuthService";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../App";
 
 export default function Navbar() {
-  const authService = new AuthService();
   const navigate = useNavigate();
+  const setAuthenticated = useContext(AuthContext);
 
   function logOut() {
-    authService.logOut();
+    setAuthenticated(false);
     navigate("/");
   }
 

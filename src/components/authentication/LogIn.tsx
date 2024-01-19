@@ -1,23 +1,23 @@
-import { ChangeEvent, FormEvent, useState } from "react";
-import AuthService from "../../services/AuthService";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import AuthFormInput from "./AuthFormInput";
 import { useNavigate } from "react-router-dom";
+import AuthService from "../../services/AuthService";
+import { AuthContext } from "../../App";
 
-interface LogInProps {
-  authService: AuthService;
-}
-
-export default function LogIn(props: LogInProps) {
-  const _authService = props.authService;
+export default function LogIn() {
   const [loginData, setLoginData] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+  const setAuthenticated = useContext(AuthContext);
+
+  const authService = new AuthService();
 
   async function logIn(e: FormEvent) {
     e.preventDefault();
-    const response = await _authService.loginUser(loginData);
+    const response = await authService.loginUser(loginData);
     if (response["success"]) {
-      navigate("home");
+      setAuthenticated(true);
+      navigate("/");
     } else {
       setErrorMessage(response["message"]);
     }
@@ -48,7 +48,7 @@ export default function LogIn(props: LogInProps) {
               type="password"
               onChange={handleChange}
             />
-            <button className="btn btn-primary" onClick={logIn}>
+            <button type="submit" className="btn btn-primary" onClick={logIn}>
               Log In
             </button>
           </form>
