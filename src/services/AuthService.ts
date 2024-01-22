@@ -4,7 +4,13 @@ const API_URL: string = "https://localhost:7280/api/user/";
 const cookies = new Cookies();
 
 const setCookie = (name: string, data: string) => {
-  cookies.set(name, data, { secure: true, httpOnly: true });
+  const currentDate = new Date();
+  currentDate.setMinutes(currentDate.getMinutes() + 15);
+  cookies.set(name, data, {
+    secure: true,
+    httpOnly: true,
+    expires: currentDate,
+  });
 };
 
 export const isLoggedIn = () => {
