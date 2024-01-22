@@ -1,4 +1,4 @@
-import ArtWorkPost from "./ArtworkPost";
+import ArtWorkPost from "./artwork/ArtworkPost";
 import "./Home.css";
 import ArtworkSamples from "./temp-data/ArtworkSamples";
 
