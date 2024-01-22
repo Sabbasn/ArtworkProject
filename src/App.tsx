@@ -16,9 +16,12 @@ function App() {
   const [auth, setAuth] = useState(false);
 
   useEffect(() => {
-    setAuth(isLoggedIn());
-    // window.location.reload();
-  }, [auth]);
+    async function getLoggedIn() {
+      const loggedIn = await isLoggedIn();
+      setAuth(loggedIn["data"]);
+    }
+    getLoggedIn();
+  }, []);
 
   const router = createBrowserRouter([
     {
