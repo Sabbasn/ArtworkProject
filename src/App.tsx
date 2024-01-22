@@ -9,18 +9,21 @@ import Home from "./components/home/Home.tsx";
 import AuthLayout from "./components/authentication/AuthLayout.tsx";
 import HomeLayout from "./components/home/HomeLayout.tsx";
 import "./App.css";
-import { createContext, useState } from "react";
-import AuthService from "./services/AuthService.ts";
-
-const authService = new AuthService();
-export const AuthContext = createContext();
+import { useEffect, useState } from "react";
+import { isLoggedIn } from "@services/AuthService.ts";
 
 function App() {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [auth, setAuth] = useState(false);
+
+  useEffect(() => {
+    setAuth(isLoggedIn());
+    // window.location.reload();
+  }, [auth]);
+
   const router = createBrowserRouter([
     {
       path: "/",
-      element: !authenticated ? <AuthLayout /> : <Navigate to="/home" />,
+      element: !auth ? <AuthLayout /> : <Navigate to="/home" />,
       children: [
         {
           path: "login",
@@ -38,7 +41,7 @@ function App() {
     },
     {
       path: "/",
-      element: authenticated ? <HomeLayout /> : <Navigate to="/login" />,
+      element: auth ? <HomeLayout /> : <Navigate to="/login" />,
       children: [
         {
           path: "home",
@@ -52,11 +55,7 @@ function App() {
     },
   ]);
 
-  return (
-    <AuthContext.Provider value={setAuthenticated}>
-      <RouterProvider router={router} />
-    </AuthContext.Provider>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

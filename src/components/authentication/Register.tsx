@@ -1,11 +1,10 @@
-import { ChangeEvent, FormEvent, useContext, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import AuthFormInput from "./AuthFormInput";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../App";
+import { registerUser } from "@services/AuthService";
 
 export default function Register() {
   const navigate = useNavigate();
-  const authService = useContext(AuthContext);
 
   const [formData, setFormData] = useState({
     username: "",
@@ -17,7 +16,7 @@ export default function Register() {
 
   async function register(e: FormEvent) {
     e.preventDefault();
-    const response = await authService.registerUser(formData);
+    const response = await registerUser(formData);
     if (response["success"]) {
       navigate("/");
     } else {

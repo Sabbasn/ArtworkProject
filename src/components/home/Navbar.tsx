@@ -1,16 +1,14 @@
 import NavbarItem from "./NavbarItem";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../App";
+import { logOut } from "../../services/AuthService";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const setAuthenticated = useContext(AuthContext);
 
-  function logOut() {
-    setAuthenticated(false);
-    navigate("/");
+  function handleLogOut() {
+    logOut();
+    navigate("/login");
   }
 
   return (
@@ -24,7 +22,7 @@ export default function Navbar() {
           <NavbarItem
             bsIcon="bi-box-arrow-right"
             text="Logout"
-            onClick={logOut}
+            onClick={handleLogOut}
           />
         </div>
       </div>
