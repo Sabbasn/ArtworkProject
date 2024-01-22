@@ -7,8 +7,3 @@
   border-bottom-left-radius: 0.3em;
   border-bottom-right-radius: 0.3em;
 }
-
-.hover-scale:hover {
-  transform: scale(1.1);
-  z-index: 10;
-}
