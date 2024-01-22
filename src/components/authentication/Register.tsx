@@ -16,7 +16,9 @@ export default function Register() {
 
   async function register(e: FormEvent) {
     e.preventDefault();
-    const response = await registerUser(formData);
+    const response = await registerUser(formData).catch(() => {
+      setErrorMessage("No response from server. Please try again.");
+    });
     if (response["success"]) {
       navigate("/");
     } else {

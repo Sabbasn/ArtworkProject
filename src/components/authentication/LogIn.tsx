@@ -10,7 +10,10 @@ export default function LogIn() {
 
   async function logIn(e: FormEvent) {
     e.preventDefault();
-    const response = await loginUser(loginData);
+    const response = await loginUser(loginData).catch(() => {
+      setErrorMessage("No response from server. Please try again.");
+      return;
+    });
     if (response["success"]) {
       navigate("/home");
     } else {
