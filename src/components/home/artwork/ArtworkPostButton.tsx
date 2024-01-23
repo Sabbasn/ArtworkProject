@@ -1,8 +1,19 @@
+import { MouseEventHandler } from "react";
+
 interface ArtworkPostButton {
   children: any;
-  active?: false;
+  active?: any;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export function ArtworkPostButton(props: ArtworkPostButton) {
-  return <button className="btn btn-primary">{props.children}</button>;
+  return (
+    <button
+      onClick={props.onClick}
+      className={`btn btn-primary ${props.active ? "active" : ""}`}
+      style={{}}
+    >
+      {props.children}
+    </button>
+  );
 }

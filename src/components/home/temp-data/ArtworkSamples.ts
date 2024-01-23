@@ -27,6 +27,15 @@ export default function ArtworkSamples() {
       title: "Pop!",
       dateUploaded: new Date(Date.parse("1975.10.14")),
     },
+    {
+      id: "3",
+      artistName: "Some italian guy",
+      dateUploaded: new Date(),
+      description: "Some description that describes the artwork",
+      imgUrl:
+        "https://www.matthiesengallery.com/wp-content/uploads/2016/10/Birmingham-annunciation653.jpg",
+      title: "Baroque Art",
+    },
   ];
   return artworkSamples;
 }

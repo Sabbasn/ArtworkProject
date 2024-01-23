@@ -1,24 +1,27 @@
 import { ArtworkPostButton } from "./ArtworkPostButton";
 import "./ArtworkPost.css";
+import { useState } from "react";
 
 interface ArtWorkPostProps {
   artwork: Artwork;
 }
 
 export default function ArtWorkPost(props: ArtWorkPostProps) {
+  const [isLiked, setIsLiked] = useState(false);
+
   return (
     <div className="card">
       <img
         src={props.artwork.imgUrl}
         className="card-img-top"
         style={{
-          maxWidth: "300px",
-          maxHeight: "300px",
+          maxWidth: "400px",
+          maxHeight: "400px",
           width: "auto",
           height: "auto",
         }}
       />
-      <div className="card-body">
+      <div className="card-body d-flex align-items-end justify-content-center">
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
             <h4 className="card-title">{props.artwork.title}</h4>
@@ -31,7 +34,10 @@ export default function ArtWorkPost(props: ArtWorkPostProps) {
             </p>
           </li>
           <li className="list-group-item d-flex gap-3 justify-content-evenly">
-            <ArtworkPostButton>
+            <ArtworkPostButton
+              active={isLiked}
+              onClick={() => setIsLiked(!isLiked)}
+            >
               <i className="bi-hand-thumbs-up-fill" />
             </ArtworkPostButton>
             <ArtworkPostButton>

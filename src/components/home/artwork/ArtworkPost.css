@@ -7,3 +7,29 @@
   border-bottom-left-radius: 0.3em;
   border-bottom-right-radius: 0.3em;
 }
+
+@keyframes btnAnimation {
+  from {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(0.8);
+  }
+
+  75% {
+    transform: scale(1.15);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.btn.active {
+  animation-duration: 250ms;
+  animation-iteration-count: 1;
+  animation-name: btnAnimation;
+  background-color: var(--bs-success);
+  border-color: var(--bs-success);
+}
