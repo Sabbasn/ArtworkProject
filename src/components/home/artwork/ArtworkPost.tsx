@@ -10,7 +10,7 @@ export default function ArtWorkPost(props: ArtWorkPostProps) {
   const [isLiked, setIsLiked] = useState(false);
 
   return (
-    <div className="card">
+    <div className="card" style={{ maxWidth: "400px", width: "100%" }}>
       <img
         src={props.artwork.imgUrl}
         className="card-img-top"
