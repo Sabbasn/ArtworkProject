@@ -1,8 +1,8 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 
 interface ArtworkPostButton {
-  children: any;
-  active?: any;
+  children: ReactNode;
+  active?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
