@@ -2,8 +2,13 @@
 type Artwork = {
   id: string;
   title: string;
+  fileData: string;
+  creatorId: string;
+  creatorName: string;
+  creatorImage: string;
+  commentCount: number;
+  likeCount: number;
+  views: number;
+  createdAt: Date;
   description: string;
-  artistName: string;
-  imgUrl: string;
-  dateUploaded: Date;
 };

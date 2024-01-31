@@ -12,7 +12,7 @@ export default function ArtWorkPost(props: ArtWorkPostProps) {
   return (
     <div className="card" style={{ maxWidth: "400px", width: "100%" }}>
       <img
-        src={props.artwork.imgUrl}
+        src={props.artwork.fileData}
         className="card-img-top"
         style={{
           maxWidth: "400px",
@@ -28,10 +28,8 @@ export default function ArtWorkPost(props: ArtWorkPostProps) {
             <p className="card-text fst-italic">{props.artwork.description}</p>
           </li>
           <li className="list-group-item">
-            <h4>{props.artwork.artistName}</h4>
-            <p className="card-text">
-              {props.artwork.dateUploaded.toUTCString()}
-            </p>
+            <h4>{props.artwork.creatorId}</h4>
+            <p className="card-text">{props.artwork.createdAt.toUTCString()}</p>
           </li>
           <li className="list-group-item d-flex gap-3 justify-content-evenly">
             <ArtworkPostButton

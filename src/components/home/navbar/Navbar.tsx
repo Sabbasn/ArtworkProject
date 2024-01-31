@@ -18,6 +18,7 @@ export default function Navbar() {
           <h1>ArtworkProject</h1>
         </a>
         <div className="d-flex">
+          <NavbarItem bsIcon="bi-camera-fill" text="Upload" />
           <NavbarItem bsIcon="bi-person-circle" text="Profile" />
           <NavbarItem
             bsIcon="bi-box-arrow-right"

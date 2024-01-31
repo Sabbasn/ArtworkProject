@@ -11,6 +11,9 @@ import HomeLayout from "./components/home/HomeLayout.tsx";
 import "./App.css";
 import { useEffect, useState } from "react";
 import { isLoggedIn } from "@services/AuthService.ts";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   const [auth, setAuth] = useState(false);
@@ -58,7 +61,11 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;
