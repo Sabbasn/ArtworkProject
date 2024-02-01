@@ -1,4 +1,14 @@
+import { useState } from "react";
+
 export function ArtworkUploadModalForm() {
+  const [image, setImage] = useState("");
+
+  const handleImageInput = (e: React.FormEvent<HTMLInputElement>) => {
+    const imgFile = URL.createObjectURL(e.currentTarget.files![0]);
+    console.log(imgFile);
+    setImage(imgFile);
+  };
+
   return (
     <form>
       <div className="mb-3">
@@ -19,10 +29,12 @@ export function ArtworkUploadModalForm() {
           accept="image/png, image/jpeg"
           className="form-control"
           id="imageUpload"
+          onInput={(e) => handleImageInput(e)}
         />
         <label htmlFor="imageUpload" className="input-group-text">
           Image
         </label>
+        <img src={image} className="img-fluid p-3" />
       </div>
     </form>
   );
