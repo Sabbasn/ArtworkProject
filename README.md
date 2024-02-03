@@ -8,7 +8,6 @@ The corresponding backend can be found at: https://github.com/spectraldesign/Art
 Table of contents:
 
 - [Technologies](#technologies)
-- [Setup](#setup)
 
 ## Technologies
 
