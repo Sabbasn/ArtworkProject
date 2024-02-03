@@ -1,14 +1,16 @@
+"use client";
 import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import LogIn from "./components/authentication/LogIn.tsx";
-import Register from "./components/authentication/Register.tsx";
-import Home from "./components/home/Home.tsx";
-import AuthLayout from "./components/authentication/AuthLayout.tsx";
-import HomeLayout from "./components/home/HomeLayout.tsx";
-import "./App.css";
+import LogIn from "../components/authentication/LogIn.tsx";
+import Register from "../components/authentication/Register.tsx";
+import Home from "../components/home/Home.tsx";
+import AuthLayout from "../components/authentication/AuthLayout.tsx";
+import HomeLayout from "../components/home/HomeLayout.tsx";
+import "../App.css";
+
 import { useEffect, useState } from "react";
 import { isLoggedIn } from "@services/AuthService.ts";
 import { QueryClient, QueryClientProvider } from "react-query";
