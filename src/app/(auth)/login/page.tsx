@@ -1,34 +1,31 @@
+"use client";
+
 import { ChangeEvent, FormEvent, useState } from "react";
-import AuthFormInput from "./AuthFormInput";
-import { useNavigate } from "react-router-dom";
-import { registerUser } from "@services/AuthService";
+import AuthFormInput from "../../components/authentication/AuthFormInput";
+import { useRouter } from "next/navigation";
+import { loginUser } from "@services/AuthService";
 
-export default function Register() {
-  const navigate = useNavigate();
-
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-    confirmPassword: "",
-  });
-
+export default function LogIn() {
+  const [loginData, setLoginData] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useRouter();
 
-  async function register(e: FormEvent) {
+  async function logIn(e: FormEvent) {
     e.preventDefault();
-    const response = await registerUser(formData).catch(() => {
+    const response = await loginUser(loginData).catch(() => {
       setErrorMessage("No response from server. Please try again.");
+      return;
     });
     if (response["success"]) {
-      navigate("/");
+      navigate.push("/home");
     } else {
       setErrorMessage(response["message"]);
     }
   }
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    setFormData({
-      ...formData,
+    setLoginData({
+      ...loginData,
       [e.target.name]: e.target.value,
     });
   }
@@ -37,10 +34,10 @@ export default function Register() {
     <div className="container" style={{ width: "600px", minWidth: "300px" }}>
       <div className="card p-3">
         <div className="card-top">
-          <h1 className="card-title mb-3">Register</h1>
+          <h1 className="card-title mb-3">Log In</h1>
         </div>
         <div className="card-body">
-          <form onSubmit={register}>
+          <form onSubmit={logIn}>
             <AuthFormInput
               name="Username"
               type="text"
@@ -51,19 +48,14 @@ export default function Register() {
               type="password"
               onChange={handleChange}
             />
-            <AuthFormInput
-              name="Confirm Password"
-              type="password"
-              onChange={handleChange}
-            />
-            <button type="submit" className="btn btn-primary">
-              Register
+            <button type="submit" className="btn btn-primary" onClick={logIn}>
+              Log In
             </button>
           </form>
           <p className="mt-3">
-            Already have an account?{" "}
+            Don't have an account?{" "}
             <span style={{ color: "var(--bs-primary)" }}>
-              <a href="/">Log In</a>
+              <a href="/register">Register</a>
             </span>
           </p>
           <p style={{ color: "var(--bs-warning)" }}>{errorMessage}</p>

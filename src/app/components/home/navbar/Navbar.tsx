@@ -1,7 +1,7 @@
 import NavbarItem from "./NavbarItem";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
-import { logOut } from "../../../services/AuthService";
+import { logOut } from "@services/AuthService";
 
 export default function Navbar() {
   const navigate = useNavigate();
