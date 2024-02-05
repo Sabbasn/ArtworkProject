@@ -33,3 +33,27 @@
   background-color: var(--bs-success);
   border-color: var(--bs-success);
 }
+
+@keyframes btnDislikeAnimation {
+  from {
+    transform: translate(0, 0) rotate(0deg);
+    background-color: var(--bs-success);
+    border-color: var(--bs-success);
+  }
+
+  50% {
+    transform: translate(0, 8px) rotate(180deg);
+    background-color: red;
+    border-color: red;
+  }
+
+  to {
+    transform: translate(0, 0) rotate(360deg);
+  }
+}
+
+.btn.inactive {
+  animation-name: btnDislikeAnimation;
+  animation-duration: 800ms;
+  animation-iteration-count: 1;
+}

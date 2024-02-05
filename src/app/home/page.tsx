@@ -1,4 +1,5 @@
-import ArtWorkPost from "./artwork/ArtworkPost";
+"use client";
+import ArtWorkPost from "../components/home/artwork/ArtworkPost";
 import "./Home.css";
 import { fetchArtwork } from "@services/ArtworkService";
 import { useQuery } from "react-query";

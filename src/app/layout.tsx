@@ -1,12 +1,9 @@
-import type { Metadata } from "next";
+"use client";
 import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "../index.css";
-
-export const metadata: Metadata = {
-  title: "ArtworkProject",
-  description: "",
-};
+import { QueryClient, QueryClientProvider } from "react-query";
 
 export default function RootLayout({
   children,
@@ -16,7 +13,9 @@ export default function RootLayout({
   return (
     <html lang="en" data-bs-theme="dark">
       <body>
-        <div id="root">{children}</div>
+        <QueryClientProvider client={new QueryClient()}>
+          <div id="root">{children}</div>
+        </QueryClientProvider>
       </body>
     </html>
   );

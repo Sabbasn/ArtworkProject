@@ -10,7 +10,7 @@ export function ArtworkPostButton(props: ArtworkPostButton) {
   return (
     <button
       onClick={props.onClick}
-      className={`btn btn-primary ${props.active ? "active" : ""}`}
+      className={`btn btn-primary ${props.active ? "active" : "inactive"}`}
       style={{}}
     >
       {props.children}

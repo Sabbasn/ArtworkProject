@@ -1,14 +1,14 @@
 import NavbarItem from "./NavbarItem";
 import "./Navbar.css";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { logOut } from "@services/AuthService";
 
 export default function Navbar() {
-  const navigate = useNavigate();
+  const navigate = useRouter();
 
   function handleLogOut() {
     logOut();
-    navigate("/login");
+    navigate.push("/login");
   }
 
   return (
