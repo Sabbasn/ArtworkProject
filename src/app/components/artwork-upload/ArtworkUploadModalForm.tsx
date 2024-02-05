@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./ArtworkUploadModalForm.css";
-import { useQuery } from "react-query";
 
 export function ArtworkUploadModalForm() {
   const [image, setImage] = useState("");
@@ -9,8 +8,6 @@ export function ArtworkUploadModalForm() {
     const imgFile = URL.createObjectURL(e.currentTarget.files![0]);
     setImage(imgFile);
   };
-
-  const uploadImage = async () => {};
 
   return (
     <form>

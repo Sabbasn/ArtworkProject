@@ -32,5 +32,6 @@ export const fetchPostArtwork = async (form: FormData): Promise<[]> => {
     return json;
   } catch (e: unknown) {
     console.warn(e);
+    return [];
   }
 };
