@@ -9,6 +9,6 @@ type Artwork = {
   commentCount: number;
   likeCount: number;
   views: number;
-  createdAt: Date;
+  createdAt: number;
   description: string;
 };

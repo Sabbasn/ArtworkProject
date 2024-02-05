@@ -27,7 +27,10 @@ export default function ArtWorkPost(props: ArtWorkPostProps) {
             <p className="card-text fst-italic">{props.artwork.description}</p>
           </li>
           <li className="list-group-item">
-            <p className="card-text">{typeof props.artwork.createdAt}</p>
+            <h4>{props.artwork.creatorName}</h4>
+            <p className="card-text">
+              {new Date(+props.artwork.createdAt).toISOString()}
+            </p>
           </li>
           <li className="list-group-item d-flex gap-3 justify-content-evenly">
             <ArtworkPostButton
