@@ -45,9 +45,6 @@ export function ArtworkUploadModalForm() {
           id="imageUpload"
           onInput={(e) => handleImageInput(e)}
         />
-        <label htmlFor="imageUpload" className="input-group-text">
-          Image
-        </label>
         <img
           src={image}
           className="img-fluid rounded artwork-upload-img mt-3"
