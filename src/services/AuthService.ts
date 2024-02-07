@@ -80,7 +80,7 @@ export const loginUser = async (userData: { [key: string]: string }) => {
   const json = await response.json();
   if (json["success"]) {
     setCookie(userData["username"], tokenStorageName, json["data"]);
-    window.location.reload();
+    // window.location.reload();
   }
   return json;
 };

@@ -24,11 +24,11 @@ export default function ArtWorkPost(props: ArtWorkPostProps) {
       <div className="card-body d-flex align-items-end justify-content-center">
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            <h4 className="card-title">{props.artwork.title}</h4>
+            <h2 className="card-title">{props.artwork.title}</h2>
             <p className="card-text fst-italic">{props.artwork.description}</p>
           </li>
           <li className="list-group-item">
-            <h4>{props.artwork.creatorName}</h4>
+            <p>By: {props.artwork.creatorName}</p>
             <p className="card-text">
               {new Date(+props.artwork.createdAt).toISOString()}
             </p>

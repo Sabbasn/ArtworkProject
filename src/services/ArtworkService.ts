@@ -1,4 +1,7 @@
+import { Cookies } from "react-cookie";
+
 const API_URL: string = "https://localhost:7280/api/image";
+const cookies = new Cookies();
 
 export const fetchArtwork = async (): Promise<Artwork[]> => {
   const response = await fetch(API_URL, {
@@ -25,6 +28,7 @@ export const fetchPostArtwork = async (form: FormData): Promise<[]> => {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "https://localhost:7280",
+        Authorization: `Bearer ${cookies.get("token")}`,
       },
       body: JSON.stringify(body),
     });

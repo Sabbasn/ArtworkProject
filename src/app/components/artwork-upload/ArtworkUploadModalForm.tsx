@@ -1,16 +1,34 @@
 import { useState } from "react";
 import "./ArtworkUploadModalForm.css";
+import { useMutation } from "react-query";
+import { fetchPostArtwork } from "@services/ArtworkService";
 
 export function ArtworkUploadModalForm() {
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState<string>("");
+  const mutation = useMutation({
+    mutationFn: fetchPostArtwork,
+  });
 
   const handleImageInput = (e: React.FormEvent<HTMLInputElement>) => {
-    const imgFile = URL.createObjectURL(e.currentTarget.files![0]);
-    setImage(imgFile);
+    const reader = new FileReader();
+    reader.readAsDataURL(e.currentTarget.files![0]);
+    reader.onload = () => {
+      const result = reader.result;
+      if (result === undefined) {
+        console.error("Can not read image as base64!");
+        return;
+      }
+      setImage(reader.result!.toString());
+    };
+  };
+
+  const handleSubmit = (formData: FormData) => {
+    formData.set("fileData", image);
+    mutation.mutate(formData);
   };
 
   return (
-    <form>
+    <form action={handleSubmit}>
       <div className="mb-3">
         <label htmlFor="imageTitle" className="form-label">
           Title
@@ -46,6 +64,21 @@ export function ArtworkUploadModalForm() {
           src={image}
           className="img-fluid rounded artwork-upload-img mt-3"
         />
+      </div>
+      <div className="modal-footer">
+        <button
+          type="button"
+          className="btn btn-secondary artwork-upload-modal-btn"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+        <button
+          type="submit"
+          className="btn btn-primary artwork-upload-modal-btn"
+        >
+          Submit
+        </button>
       </div>
     </form>
   );

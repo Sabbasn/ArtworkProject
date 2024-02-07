@@ -17,21 +17,6 @@ export function ArtworkUploadModal() {
           <div className="modal-body">
             <ArtworkUploadModalForm />
           </div>
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary artwork-upload-modal-btn"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button
-              type="button"
-              className="btn btn-primary artwork-upload-modal-btn"
-            >
-              Submit
-            </button>
-          </div>
         </div>
       </div>
     </div>
