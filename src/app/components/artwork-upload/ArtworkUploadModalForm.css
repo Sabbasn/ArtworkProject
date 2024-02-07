@@ -1,3 +1,12 @@
 .artwork-upload-img {
   border-radius: 0.6em;
 }
+
+.artwork-upload-modal-btn {
+  background-color: transparent !important;
+  border-color: white !important;
+}
+
+.artwork-upload-modal-btn:hover {
+  background-color: var(--bs-primary) !important;
+}
