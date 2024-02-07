@@ -43,7 +43,12 @@ body {
 }
 
 @media (max-width: 600px) {
-  .navbar-item {
+  .navbar-item,
+  .navbar-brand {
+    display: none;
+  }
+
+  .navbar {
     display: none;
   }
 }

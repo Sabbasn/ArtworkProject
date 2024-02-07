@@ -21,8 +21,11 @@ export default function ArtWorkPost(props: ArtWorkPostProps) {
         sizes="100vw"
         style={{ width: "100%", height: "auto" }}
       />
-      <div className="card-body d-flex align-items-end justify-content-center">
-        <ul className="list-group list-group-flush">
+      <div className="card-body d-flex align-items-center justify-content-center">
+        <ul
+          className="list-group list-group-flush card-body-ul"
+          style={{ maxWidth: "100%" }}
+        >
           <li className="list-group-item">
             <h2 className="card-title">{props.artwork.title}</h2>
             <p className="card-text fst-italic">{props.artwork.description}</p>

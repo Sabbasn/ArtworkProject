@@ -12,7 +12,7 @@ export default function Home() {
       return;
     }
     const artwork = data
-      .sort((a: Artwork, b: Artwork) => a.createdAt - b.createdAt)
+      .sort((a: Artwork, b: Artwork) => b.createdAt - a.createdAt)
       .map((art: Artwork) => <ArtWorkPost artwork={art} key={art.id} />);
     return artwork;
   };
