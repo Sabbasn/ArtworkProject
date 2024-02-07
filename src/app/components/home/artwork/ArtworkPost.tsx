@@ -16,9 +16,10 @@ export default function ArtWorkPost(props: ArtWorkPostProps) {
         src={props.artwork.fileData}
         alt="something"
         className="card-img-top"
-        width={300}
-        height={300}
-        sizes="(max-width: 400px)"
+        width="0"
+        height="0"
+        sizes="100vw"
+        style={{ width: "100%", height: "auto" }}
       />
       <div className="card-body d-flex align-items-end justify-content-center">
         <ul className="list-group list-group-flush">
