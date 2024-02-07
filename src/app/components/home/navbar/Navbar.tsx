@@ -13,7 +13,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="navbar">
+    <nav className="navbar mb-3">
       <div className="container-fluid" style={{ padding: "0" }}>
         <a className="navbar-brand">
           <h1>ArtworkProject</h1>
