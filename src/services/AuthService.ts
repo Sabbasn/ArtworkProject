@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import Cookies from "universal-cookie";
 
 const API_URL: string = "https://localhost:7280/api/user/";
@@ -85,8 +86,11 @@ export const loginUser = async (userData: { [key: string]: string }) => {
   return json;
 };
 
-export const logOut = () => {
-  cookies.remove(tokenStorageName);
-  cookies.remove("username");
-  window.location.reload();
+export const useLogOut = () => {
+  const router = useRouter();
+  return () => {
+    cookies.remove(tokenStorageName);
+    cookies.remove("username");
+    router.push("/");
+  };
 };

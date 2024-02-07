@@ -7,6 +7,7 @@ export function ArtworkUploadModalForm() {
   const [image, setImage] = useState<string>("");
   const mutation = useMutation({
     mutationFn: fetchPostArtwork,
+    onSuccess: () => console.log("Success!"),
   });
 
   const handleImageInput = (e: React.FormEvent<HTMLInputElement>) => {
@@ -25,6 +26,7 @@ export function ArtworkUploadModalForm() {
   const handleSubmit = (formData: FormData) => {
     formData.set("fileData", image);
     mutation.mutate(formData);
+    window.location.reload();
   };
 
   return (

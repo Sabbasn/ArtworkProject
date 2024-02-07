@@ -1,7 +1,7 @@
 "use client";
 import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/dist/js/bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import "../scss/styles.scss";
 import "../index.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 

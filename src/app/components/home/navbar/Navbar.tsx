@@ -1,16 +1,10 @@
 import NavbarItem from "./NavbarItem";
 import "./Navbar.css";
-import { useRouter } from "next/navigation";
-import { logOut } from "@services/AuthService";
 import { ArtworkUploadModal } from "../../artwork-upload/ArtworkUploadModal";
+import { useLogOut } from "@services/AuthService";
 
 export default function Navbar() {
-  const navigate = useRouter();
-
-  function handleLogOut() {
-    logOut();
-    navigate.push("/login");
-  }
+  const logOut = useLogOut();
 
   return (
     <nav className="navbar mb-3">
@@ -28,7 +22,7 @@ export default function Navbar() {
           <NavbarItem
             bsIcon="bi-box-arrow-right"
             text="Logout"
-            onClick={handleLogOut}
+            onClick={logOut}
           />
         </div>
         <ArtworkUploadModal />
