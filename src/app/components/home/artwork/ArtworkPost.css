@@ -27,27 +27,42 @@
 }
 
 .btn.inactive:hover:not(.active) {
-  background-color: var(--bs-primary);
+  background-color: #125491;
 }
 
 .btn {
   animation-duration: 250ms;
   animation-iteration-count: 1;
   animation-name: btnAnimation;
-  background-color: var(--bs-success);
-  border-color: var(--bs-success);
+  width: 100px;
+  background-color: #12916b;
+  filter: none;
+  border-color: white;
 }
 
 @keyframes btnDislikeAnimation {
   from {
     transform: translate(0, 0) rotate(0deg);
-    background-color: var(--bs-success);
-    border-color: var(--bs-success);
+    background-color: #12916b;
+    border-color: white;
+  }
+
+  40% {
+    transform: translate(0, 8px) rotate(180deg);
+    background-color: rgb(143, 32, 56);
+    border-color: white;
   }
 
   50% {
+    transform: translate(0, 15px) rotate(180deg);
+    background-color: rgb(143, 32, 56);
+    border-color: white;
+  }
+
+  60% {
     transform: translate(0, 8px) rotate(180deg);
-    background-color: red;
+    background-color: rgb(143, 32, 56);
+    filter: drop-shadow(0 0 0.3rem crimson);
     border-color: white;
   }
 
@@ -57,7 +72,8 @@
 }
 
 .btn.active {
-  background-color: var(--bs-success);
+  background-color: #12916b;
+  filter: drop-shadow(0 0 0.3rem rgb(20, 220, 110));
   border-color: white;
 }
 
@@ -67,4 +83,65 @@
   animation-iteration-count: 1;
   background-color: transparent;
   border-color: white;
+}
+
+.card{
+  background-color: rgba(2, 12, 26, 0.445);
+  filter: grayscale(100%);
+  transition: 300ms ease-in-out;
+  animation-play-state: paused;
+  animation: rotateOut 200ms linear;
+  animation-iteration-count: 1;
+}
+.card:hover{
+  animation: rotateIn 200ms linear;
+  filter: grayscale(0%);
+  transition: 300ms ease-in-out;
+  animation-iteration-count: 1;
+
+}
+
+.card-img-glow{
+  position: absolute;
+  z-index: -2;
+  filter: blur(40px);
+  opacity: 0;
+  transition: 300ms ease-in-out;
+}
+
+.card:hover > .card-img-glow{
+  opacity: 0.5;
+  transition: 300ms ease-in-out;
+}
+
+.card-text{
+  max-height: 0px;
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+}
+
+.card:hover > .card-body > .card-body-ul > .list-group-item > .card-text,
+.card:hover > .card-body > .card-body-ul > .list-group-item > .creator-info{
+  max-height: 250px;
+  opacity: 1;
+  transition: all 400ms ease-in-out;
+}
+
+.creator-info{
+  max-height: 0px;
+  position: relative;
+  right: 32%;
+  bottom: 40px;
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+}
+
+.datetime{
+  margin-top: 15px;
+  margin-bottom: 0px;
+  color: rgba(255,255,255,0.4);
+}
+
+.button-group{
+  margin-top: 10px;
 }

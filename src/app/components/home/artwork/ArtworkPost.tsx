@@ -7,6 +7,12 @@ interface ArtWorkPostProps {
   artwork: Artwork;
 }
 
+function formatDate(date: Date){
+  const datestring:string = date.toLocaleDateString();
+  const timestring:string = date.toLocaleTimeString();
+  return `${datestring} - ${timestring}`
+}
+
 export default function ArtWorkPost(props: ArtWorkPostProps) {
   const [isLiked, setIsLiked] = useState(false);
 
@@ -21,22 +27,29 @@ export default function ArtWorkPost(props: ArtWorkPostProps) {
         sizes="100vw"
         style={{ width: "100%", height: "auto" }}
       />
+      <Image
+        src={props.artwork.fileData}
+        alt="something"
+        className="card-img-glow"
+        width="0"
+        height="0"
+        sizes="100vw"
+        style={{ width: "100%", height: "auto" }}
+      />
       <div className="card-body d-flex align-items-center justify-content-center">
         <ul
           className="card-body-ul d-flex flex-column container"
           style={{ maxWidth: "100%" }}
         >
           <li className="list-group-item">
+          <div className="creator-info">
+              <i className="uploaded-by">Uploaded by: </i>
+              <i className="creator"><b> {props.artwork.creatorName}</b></i>
+            </div>
             <h2 className="card-title">{props.artwork.title}</h2>
             <p className="card-text fst-italic">{props.artwork.description}</p>
           </li>
-          <li className="list-group-item">
-            <p>By: {props.artwork.creatorName}</p>
-            <p className="card-text">
-              {new Date(+props.artwork.createdAt).toISOString()}
-            </p>
-          </li>
-          <li className="list-group-item d-flex gap-3 justify-content-evenly">
+          <li className="button-group list-group-item d-flex gap-3 justify-content-evenly">
             <ArtworkPostButton
               active={isLiked}
               onClick={() => setIsLiked(!isLiked)}
@@ -46,6 +59,11 @@ export default function ArtWorkPost(props: ArtWorkPostProps) {
             <ArtworkPostButton>
               <i className="bi-chat-dots-fill" />
             </ArtworkPostButton>
+          </li>
+          <li className="list-group-item">
+            <p className="datetime card-text">
+              {formatDate(new Date(+props.artwork.createdAt * 1000))}
+            </p>
           </li>
         </ul>
       </div>
