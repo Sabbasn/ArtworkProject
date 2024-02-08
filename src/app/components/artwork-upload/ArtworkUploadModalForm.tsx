@@ -40,6 +40,7 @@ export function ArtworkUploadModalForm() {
           type="text"
           className="form-control"
           id="imageTitle"
+          maxLength={60}
         />
       </div>
       <div className="mb-3">
