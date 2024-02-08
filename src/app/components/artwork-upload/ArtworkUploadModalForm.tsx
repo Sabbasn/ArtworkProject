@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import "./ArtworkUploadModalForm.css";
 import { useMutation } from "react-query";
