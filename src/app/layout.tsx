@@ -23,9 +23,7 @@ export default function RootLayout({
       setAuth(loggedIn["data"]);
     }
     getLoggedIn();
-    if (auth) {
-      router.push("/home");
-    } else {
+    if (!auth) {
       router.push("/login");
     }
   }, [auth, router]);
