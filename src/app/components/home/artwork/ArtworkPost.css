@@ -101,6 +101,19 @@
 
 }
 
+.card-img-top, .card-img-glow{
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  transition: all 300ms ease-in-out;
+}
+
+.card:hover > .card-img-top, .card-img-glow{
+  aspect-ratio: auto;
+  object-fit: auto;
+  transition: all 300ms ease-in-out;
+}
+
+
 .card-img-glow{
   position: absolute;
   z-index: -2;
