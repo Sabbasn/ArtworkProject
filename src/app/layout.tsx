@@ -13,6 +13,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-bs-theme="dark">
+      <head>
+        <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+        </style>
+      </head>
       <body>
         <QueryClientProvider client={new QueryClient()}>
           <div id="root">{children}</div>

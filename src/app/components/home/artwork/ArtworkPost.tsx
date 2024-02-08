@@ -23,7 +23,7 @@ export default function ArtWorkPost(props: ArtWorkPostProps) {
       />
       <div className="card-body d-flex align-items-center justify-content-center">
         <ul
-          className="list-group list-group-flush card-body-ul"
+          className="card-body-ul d-flex flex-column container"
           style={{ maxWidth: "100%" }}
         >
           <li className="list-group-item">
