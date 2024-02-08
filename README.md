@@ -16,3 +16,6 @@ The frontend of ArtworkProject is built using the [React](https://react.dev/) li
 
 ![ArtworkProject like](https://github.com/Sabbasn/ArtworkProject/assets/31287530/f032d766-1649-48df-92f1-28beb85ed552)
 
+Image animation:
+
+![artiqube image](https://github.com/Sabbasn/ArtworkProject/assets/59234024/99c728a3-e0b2-41f5-8ea8-05fe5d69f6e4)
