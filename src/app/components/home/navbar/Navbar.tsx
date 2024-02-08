@@ -1,9 +1,10 @@
+"use client";
 import NavbarItem from "./NavbarItem";
 import "./Navbar.css";
 import { ArtworkUploadModal } from "../../artwork-upload/ArtworkUploadModal";
 import { useLogOut } from "@services/AuthService";
 import Image from "next/image";
-import logo from "../../../../../public/ArtiQubeLogo.png";
+import logo from "@public/ArtiQubeLogo.png";
 
 export default function Navbar() {
   const logOut = useLogOut();

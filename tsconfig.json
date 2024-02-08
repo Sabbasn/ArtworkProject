@@ -9,7 +9,8 @@
     /* Defined Absolute Paths */
     "baseUrl": ".",
     "paths": {
-      "@services/*": ["src/services/*"]
+      "@services/*": ["src/services/*"],
+      "@public/*": ["public/*"]
     },
 
     /* Bundler mode */
@@ -22,7 +23,7 @@
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
-    "plugins": [{"name": "next"}],
+    "plugins": [{ "name": "next" }],
     "esModuleInterop": true,
     /* Linting */
     "strict": true,
