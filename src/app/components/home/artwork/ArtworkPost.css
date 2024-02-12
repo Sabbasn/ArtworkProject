@@ -121,7 +121,7 @@
   border: 1px solid white;
 }
 
-.card:hover > .image-component > .view-image-text{
+.image-component:hover > .view-image-text{
   opacity: 1;
   transition: all 300ms ease-in-out;
 }
