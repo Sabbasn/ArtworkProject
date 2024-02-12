@@ -5,28 +5,12 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "../scss/styles.scss";
 import "../index.css";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { isLoggedIn } from "@services/AuthService";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [auth, setAuth] = useState(false);
-  const router = useRouter();
-
-  useEffect(() => {
-    async function getLoggedIn() {
-      const loggedIn = await isLoggedIn();
-      setAuth(loggedIn["data"]);
-    }
-    getLoggedIn();
-    if (!auth) {
-      router.push("/login");
-    }
-  }, [auth, router]);
   return (
     <html lang="en" data-bs-theme="dark">
       <head>

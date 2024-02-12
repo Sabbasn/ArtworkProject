@@ -1,10 +1,13 @@
 "use client";
 import { fetchProfile } from "@services/ProfileService";
+import { useParams } from "next/navigation";
 import { useQuery } from "react-query";
 
 export default function ProfilePage() {
-  // const params = useParams<{ id: string }>(); // Will be used when backend is updated
-  const { data, status } = useQuery("profile", fetchProfile);
+  const params = useParams<{ username: string }>(); // Will be used when backend is updated
+  const { data, status } = useQuery(["profile", params.username], () =>
+    fetchProfile(params.username)
+  );
 
   return (
     <div className="container-sm">

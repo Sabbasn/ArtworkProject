@@ -22,26 +22,15 @@ const setCookie = (username: string, name: string, data: string) => {
 
 export const isLoggedIn = async () => {
   const token = cookies.get(tokenStorageName);
-  const username = cookies.get("username");
-  if (!token || !username) {
-    return false;
-  }
-
-  const body = {
-    token: token,
-    username: username,
-  };
-
-  const response = await fetch(API_URL + "verify", {
+  const response = await fetch(API_URL + "currentUser", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "https://localhost:7280",
+      Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(body),
   });
-  const json = await response.json();
-  return json;
+  return response.ok;
 };
 
 export const registerUser = async (userData: { [key: string]: string }) => {
