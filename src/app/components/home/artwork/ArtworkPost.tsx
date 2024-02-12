@@ -18,24 +18,27 @@ export default function ArtWorkPost(props: ArtWorkPostProps) {
 
   return (
     <div className="card" style={{ maxWidth: "400px", width: "100%" }}>
-      <Image
-        src={props.artwork.fileData}
-        alt="something"
-        className="card-img-top"
-        width="0"
-        height="0"
-        sizes="100vw"
-        style={{ width: "100%", height: "auto" }}
-      />
-      <Image
-        src={props.artwork.fileData}
-        alt="something"
-        className="card-img-glow"
-        width="0"
-        height="0"
-        sizes="100vw"
-        style={{ width: "100%", height: "auto" }}
-      />
+      <div className="image-component d-flex align-items-center justify-content-center flex-column">
+        <p className="view-image-text">View full image</p>
+        <Image
+          src={props.artwork.fileData}
+          alt="something"
+          className="card-img-top"
+          width="0"
+          height="0"
+          sizes="100vw"
+          style={{ width: "100%", height: "auto" }}
+        />
+        <Image
+          src={props.artwork.fileData}
+          alt="something"
+          className="card-img-glow"
+          width="0"
+          height="0"
+          sizes="100vw"
+          style={{ width: "100%", height: "auto" }}
+        />
+      </div>
       <div className="card-body d-flex align-items-center justify-content-center">
         <ul
           className="card-body-ul d-flex flex-column container"

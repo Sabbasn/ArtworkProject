@@ -93,12 +93,16 @@
   animation: rotateOut 200ms linear;
   animation-iteration-count: 1;
 }
+
 .card:hover{
   animation: rotateIn 200ms linear;
   filter: grayscale(0%);
   transition: 300ms ease-in-out;
   animation-iteration-count: 1;
+}
 
+.image-component:hover{
+  cursor: pointer;
 }
 
 .card-img-top, .card-img-glow{
@@ -107,11 +111,26 @@
   transition: all 300ms ease-in-out;
 }
 
-.card:hover > .card-img-top, .card-img-glow{
+.view-image-text{
+  position: absolute;
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+.card:hover > .image-component > .view-image-text{
+  opacity: 1;
+  transition: all 300ms ease-in-out;
+}
+
+/* .card:hover > .card-img-top, .card-img-glow{
   aspect-ratio: auto;
   object-fit: auto;
   transition: all 300ms ease-in-out;
-}
+} */
 
 
 .card-img-glow{
