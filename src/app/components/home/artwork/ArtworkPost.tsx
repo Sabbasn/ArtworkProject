@@ -1,12 +1,11 @@
 import { ArtworkPostButton } from "./ArtworkPostButton";
 import "./ArtworkPost.css";
 import { useState } from "react";
-import Image from "next/image";
+import ArtworkImage from "./ArtworkImage";
 
 interface ArtWorkPostProps {
   artwork: Artwork;
-}
-
+}  
 function formatDate(date: Date){
   const datestring:string = date.toLocaleDateString();
   const timestring:string = date.toLocaleTimeString();
@@ -15,27 +14,9 @@ function formatDate(date: Date){
 
 export default function ArtWorkPost(props: ArtWorkPostProps) {
   const [isLiked, setIsLiked] = useState(false);
-
   return (
     <div className="card" style={{ maxWidth: "400px", width: "100%" }}>
-      <Image
-        src={props.artwork.fileData}
-        alt="something"
-        className="card-img-top"
-        width="0"
-        height="0"
-        sizes="100vw"
-        style={{ width: "100%", height: "auto" }}
-      />
-      <Image
-        src={props.artwork.fileData}
-        alt="something"
-        className="card-img-glow"
-        width="0"
-        height="0"
-        sizes="100vw"
-        style={{ width: "100%", height: "auto" }}
-      />
+      <ArtworkImage imageData={props.artwork.fileData}/>
       <div className="card-body d-flex align-items-center justify-content-center">
         <ul
           className="card-body-ul d-flex flex-column container"
